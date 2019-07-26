@@ -1,0 +1,13 @@
+k run shell --rm -it --image mcr.microsoft.com/powershell
+
+Test-Connection 10.165.160.219 -TcpPort 80
+
+Invoke-WebRequest http://10.165.160.219/SystemAdminServices/NetworkService.svc
+
+# Turner DNS Servers
+Test-Connection 10.189.255.249 -TcpPort 53
+Test-Connection 10.188.255.222 -TcpPort 53
+
+Test-Connection crossroad-systemadmin.turner.com -ResolveDestination
+
+Invoke-WebRequest http://crossroad-systemadmin.turner.com/SystemAdminServices/NetworkService.svc
